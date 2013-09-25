@@ -1,20 +1,15 @@
 function ajax(text) {
-    var xhReq;
-    xhReq = new XMLHttpRequest();
-    
-    var stage;
-    stage = document.getElementById("stage");
+    var xhReq = new XMLHttpRequest();
+    var stage = document.getElementById("stage");
+    var url = "ajax.php?s=" + stage.value + "&q=" + text;
 
-    var url;
-    url = "ajax.php?s=" + stage.value + "&q=" + text;
-    
     xhReq.open("GET", url, false);
     xhReq.send(null);
     
-    var console;
-    console = document.getElementById("console");
-    console.innerHTML = xhReq.responseText;
+    document.getElementById("console")
+            .innerHTML = xhReq.responseText;
     
-    stage.value = parseInt(stage.value) + 1;
+    document.getElementById("stage")
+            .value = parseInt(stage.value) + 1;
     
 }
